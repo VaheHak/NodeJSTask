@@ -11,6 +11,9 @@ class UsersController {
 
   static allUsers = async (req, res, next) => {
     try {
+      await Validate(req.query, {
+        page: 'required|number',
+      })
       const {page = 1} = req.query;
       let pageSize = 5;
 
